@@ -1,47 +1,28 @@
-import React from "react";
-import CustomButton from "./assets/Generic_Components/CustomButton";
-import SaveIcon from "@mui/icons-material/Save";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Auction from './pages/Auction';
+import Teams from './pages/Teams';
+import Schedule from './pages/Schedule';
+import Stats from './pages/Stats';
+import './index.css';
 
-const App = () => {
+function App() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "20px" }}>
-      {/* Default Button */}
-      <CustomButton onClick={() => alert("Clicked Primary Button")}>
-        Primary Button
-      </CustomButton>
-
-      {/* Outlined Secondary Button */}
-      <CustomButton variant="outlined" color="secondary">
-        Outlined Button
-      </CustomButton>
-
-      {/* Large Success Button */}
-      <CustomButton variant="contained" color="success" size="large">
-        Success Button
-      </CustomButton>
-
-      {/* Button with Start Icon */}
-      <CustomButton startIcon={<SaveIcon />} color="info">
-        Save
-      </CustomButton>
-
-      {/* Button with End Icon */}
-      <CustomButton endIcon={<DeleteIcon />} color="error">
-        Delete
-      </CustomButton>
-
-      {/* Full-Width Disabled Button */}
-      <CustomButton fullWidth disabled>
-        Disabled Button
-      </CustomButton>
-
-      {/* Loading Button */}
-      <CustomButton loading color="warning">
-        Submit
-      </CustomButton>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auction" element={<Auction />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/stats" element={<Stats />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
