@@ -1,27 +1,11 @@
-// Match model
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const matchSchema = new mongoose.Schema({
-    tournament: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tournament',
-        required: true,
-    },
-    teams: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Team',
-    }],
-    date: {
-        type: Date,
-        required: true,
-    },
-    score: {
-        type: String,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+const MatchSchema = new mongoose.Schema({
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
+  date: Date,
+  venue: String,
+  result: String,
+  scoreboard: { type: Object, default: {} }
 });
 
-module.exports = mongoose.model('Match', matchSchema);
+export const Match = mongoose.model('Match', MatchSchema);

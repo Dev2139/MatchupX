@@ -1,18 +1,11 @@
-// Socket.io utility for real-time updates
-const { Server } = require('socket.io');
-
-const setupSocket = (server) => {
-    const io = new Server(server);
-
+const initializeSocket = (io) => {
     io.on('connection', (socket) => {
-        console.log('New client connected');
-
-        socket.on('disconnect', () => {
-            console.log('Client disconnected');
-        });
+      console.log('A user connected');
+      socket.on('disconnect', () => {
+        console.log('User disconnected');
+      });
     });
-
-    return io;
-};
-
-module.exports = setupSocket;
+  };
+  
+  export default initializeSocket;
+  

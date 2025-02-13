@@ -1,10 +1,17 @@
-// Auth controller
-const User = require('../models/User');
+import { auth } from 'express-oauth2-jwt-bearer';
+import User from '../models/User.js';
 
-exports.login = async (req, res) => {
-    // Login logic here
+export const login = async (req, res) => {
+    // Logic for login using Auth0
+    res.json({ message: "Login logic to be implemented with Auth0" });
 };
 
-exports.register = async (req, res) => {
-    // Registration logic here
+export const register = async (req, res) => {
+    // Logic for registration using Auth0
+    res.json({ message: "Registration logic to be implemented with Auth0" });
+};
+
+export const googleLogin = async (req, res) => {
+    // Logic for Google login using Auth0
+    res.json({ message: "Google login logic to be implemented with Auth0" });
 };

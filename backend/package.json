@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Backend for the tournament management system",
   "main": "server.js",
+  "type": "module",
+
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -11,12 +13,10 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.9",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "socket.io": "^3.0.3"
+    "express-oauth2-jwt-bearer": "^0.3.0"
+
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
