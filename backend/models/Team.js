@@ -1,23 +1,9 @@
-// Team model
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const teamSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    players: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Player',
-    }],
-    tournament: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tournament',
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+const TeamSchema = new mongoose.Schema({
+  name: String,
+  players: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Player' }],
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
-module.exports = mongoose.model('Team', teamSchema);
+export const Team = mongoose.model('Team', TeamSchema);

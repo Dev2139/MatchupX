@@ -1,28 +1,10 @@
-// Auction model
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const auctionSchema = new mongoose.Schema({
-    tournament: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tournament',
-        required: true,
-    },
-    players: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Player',
-    }],
-    startTime: {
-        type: Date,
-        required: true,
-    },
-    endTime: {
-        type: Date,
-        required: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+const AuctionSchema = new mongoose.Schema({
+  player: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+  highestBid: Number,
+  highestBidder: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
+  isCompleted: Boolean
 });
 
-module.exports = mongoose.model('Auction', auctionSchema);
+export const Auction = mongoose.model('Auction', AuctionSchema);

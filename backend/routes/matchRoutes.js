@@ -1,10 +1,20 @@
-// Match routes
-const express = require('express');
+import express from 'express';
+import { getMatches, createMatch, updateMatch } from '../controllers/matchController.js';
+import verifyAuth0Token from '../middleware/authMiddleware.js';
+
+import express from 'express';
+import { getAllMatches, createMatch, updateMatch } from '../controllers/matchController.js';
+import { verifyAuth0Token, checkRole } from '../middleware/authMiddleware.js';
+
 const router = express.Router();
-const matchController = require('../controllers/matchController');
 
-// Define match routes here
-router.get('/', matchController.getAllMatches);
-router.post('/', matchController.createMatch);
+router.get('/api/matches', getAllMatches);
+router.post('/api/matches', verifyAuth0Token, checkRole(['admin']), createMatch);
+router.put('/api/matches/:id', verifyAuth0Token, checkRole(['admin']), updateMatch);
 
-module.exports = router;
+
+router.get('/', getMatches);
+router.post('/', verifyAuth0Token, createMatch);
+router.put('/:id', verifyAuth0Token, updateMatch);
+
+export default router;
